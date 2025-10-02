@@ -192,6 +192,7 @@ function Tool(){
   const [html,setHtml] = useState('')
   const [loading,setLoading] = useState(false)
   const [copyStatus,setCopyStatus] = useState('')
+  const [error,setError] = useState('')
   function onParseOutputClick(e){
     const target = e.target
     if (target && target.classList && target.classList.contains('token')){
@@ -211,8 +212,17 @@ function Tool(){
     if (!sentence.trim()) return
     setLoading(true)
     setHtml('')
-    const res = await request(API_CONFIG.endpoints.parse, { method:'POST', body: JSON.stringify({ sentence }) })
-    setHtml(res?.html || '')
+    setError('')
+    try {
+      const res = await request(API_CONFIG.endpoints.parse, { method:'POST', body: JSON.stringify({ sentence }) })
+      if (res?.html) {
+        setHtml(res.html)
+      } else {
+        setError('حدث خطأ في التحليل. يرجى المحاولة مرة أخرى.')
+      }
+    } catch (err) {
+      setError('فشل في الاتصال بالخادم. تحقق من اتصال الإنترنت.')
+    }
     setLoading(false)
   }
   return (
@@ -253,6 +263,10 @@ function Tool(){
                   <span className="token skeleton" style={{width:'30%'}}></span>
                   <span className="token skeleton" style={{width:'40%'}}></span>
                   <span className="token skeleton" style={{width:'35%'}}></span>
+                </div>
+              ) : error ? (
+                <div style={{color:'red', textAlign:'center', padding:20}}>
+                  {error}
                 </div>
               ) : (
                 <div className="parse-output">{renderAsLines(html, sentence)}</div>
