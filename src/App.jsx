@@ -2,73 +2,6 @@ import { useEffect, useMemo, useState, useRef } from 'react'
 import { Link, NavLink, Route, Routes, useNavigate, useParams } from 'react-router-dom'
 import './App.css'
 
-// AdSense Ad Components
-function ContentAd({ style, ...props }) {
-  useEffect(() => {
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {
-      console.error('AdSense error:', e);
-    }
-  }, []);
-
-  return (
-    <ins
-      className="adsbygoogle"
-      style={{ display: 'block', ...style }}
-      data-ad-client="ca-pub-2789303242179184"
-      data-ad-slot="1234567890"
-      data-ad-format="auto"
-      data-full-width-responsive="true"
-      {...props}
-    />
-  );
-}
-
-function ResponsiveAd({ style, ...props }) {
-  useEffect(() => {
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {
-      console.error('AdSense error:', e);
-    }
-  }, []);
-
-  return (
-    <ins
-      className="adsbygoogle"
-      style={{ display: 'block', ...style }}
-      data-ad-client="ca-pub-2789303242179184"
-      data-ad-slot="0987654321"
-      data-ad-format="auto"
-      data-full-width-responsive="true"
-      {...props}
-    />
-  );
-}
-
-function FooterAd({ style, ...props }) {
-  useEffect(() => {
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {
-      console.error('AdSense error:', e);
-    }
-  }, []);
-
-  return (
-    <ins
-      className="adsbygoogle"
-      style={{ display: 'block', ...style }}
-      data-ad-client="ca-pub-2789303242179184"
-      data-ad-slot="1122334455"
-      data-ad-format="auto"
-      data-full-width-responsive="true"
-      {...props}
-    />
-  );
-}
-
 const API_CONFIG = {
   get baseUrl(){
     // In development, use empty string to use Vite proxy
@@ -250,8 +183,7 @@ function Hero(){
         </p>
       </div>
 
-      {/* Ad Section */}
-      <ContentAd style={{marginTop: 24, minHeight: 250}} />
+
     </section>
   )
 }
@@ -344,8 +276,7 @@ function Tool(){
             </div>
           )}
 
-          {/* Ad Section */}
-          <ContentAd style={{marginTop: 12, minHeight: 200}} />
+
 
           {/* Help Section */}
           <div className="card" style={{marginTop:12,backgroundColor:'var(--card-bg)',border:'1px solid var(--border)'}}>
@@ -649,9 +580,6 @@ function Footer(){
   return (
     <footer className="footer">
       <div className="container">
-        {/* AdSense Ad Unit */}
-        <FooterAd style={{margin: '20px auto'}} />
-
         <nav style={{display:'flex',gap:14,flexWrap:'wrap',justifyContent:'center'}}>
           <Link to="/">الرئيسية</Link>
           <Link to="/tool">أداة الإعراب</Link>
