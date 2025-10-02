@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState, useRef } from 'react'
 import { Link, NavLink, Route, Routes, useNavigate, useParams } from 'react-router-dom'
 import './App.css'
-import { HeaderAd, ContentAd, FooterAd, ResponsiveAd } from './components/AdSense'
 
 const API_CONFIG = {
   get baseUrl(){
@@ -114,7 +113,6 @@ function Header(){
         </Link>
       </div>
       {open && <div className="backdrop" onClick={close} aria-hidden="true"></div>}
-      <HeaderAd aria-label="إعلان أعلى الصفحة" />
     </header>
   )
 }
@@ -142,7 +140,6 @@ function Hero(){
         <h2>ما هو موقع أعربلي؟</h2>
         <p style={{margin:'6px 0 0'}}>موقع "أعربلي" أداة متقدمة تساعد الطلاب والمتعلمين والمهتمين باللغة العربية على فهم قواعد النحو والإعراب بسهولة ودقة. يقدّم الموقع تجربة بسيطة وسريعة لتحليل الجمل العربية والحصول على إعراب منسّق لكل كلمة.</p>
       </div>
-      <ContentAd aria-label="إعلان وسط الصفحة" style={{marginTop:16,width:'100%'}} />
       {posts.length > 0 && (
         <div className="grid grid-3" style={{marginTop:24}}>
           {posts.map(p=> (
@@ -167,8 +164,6 @@ function Hero(){
           <li><strong>احصل على النتيجة:</strong> خلال ثوانٍ، سيظهر الإعراب المفصل لكل كلمة في الجملة أمامك.</li>
         </ol>
       </div>
-
-      <HeaderAd style={{marginTop:16}} />
 
       <div className="card" style={{marginTop:16}}>
         <h2 style={{color:'var(--neon)',textAlign:'right'}}>لماذا تختار أعربلي؟</h2>
@@ -264,8 +259,7 @@ function Tool(){
               )}
             </div>
           )}
-          <ResponsiveAd style={{marginTop:12}} />
-          
+
           {/* Help Section */}
           <div className="card" style={{marginTop:12,backgroundColor:'var(--card-bg)',border:'1px solid var(--border)'}}>
             <h4 style={{margin:'0 0 8px',color:'var(--neon)'}}>معلومة مهمة</h4>
@@ -382,7 +376,6 @@ function Blog(){
           <h2>من مدونتنا</h2>
         </div>
         <div className="grid grid-3" style={{transition:'grid-template-rows .4s ease'}}>
-          <ContentAd style={{gridColumn:'1 / -1',margin:'6px 0 10px'}} />
           {(expanded ? posts : posts.slice(0,6)).map(p=> (
             <div key={p.id} className="card">
               <h3 style={{color:'var(--neon)',margin:'0 0 8px'}}>{p.title}</h3>
@@ -430,7 +423,6 @@ function BlogPost(){
           <h1 className="ruqaa ruqaa-invert" style={{marginTop:0}}>{post.title}</h1>
           <div style={{fontSize:'.9rem',color:'#8aa9b0',marginBottom:12}}>{post.date}</div>
           <p>{post.excerpt}</p>
-          <ContentAd style={{margin:'16px 0'}} />
           <div dangerouslySetInnerHTML={{__html: post.content || ''}} />
         </article>
       </div>
@@ -447,7 +439,6 @@ function About(){
           <p style={{margin:'6px 0 0'}}>تم إطلاق موقع "أعربلي" بهدف تسهيل فهم قواعد اللغة العربية وجعلها في متناول الجميع. نحن نؤمن بأن التكنولوجيا يمكن أن تلعب دورًا كبيرًا في التعليم، ونسعى من خلال هذا المشروع إلى تقديم أداة تعليمية مبتكرة ومجانية.</p>
           <p style={{margin:'10px 0 0'}}>تم تطوير "أعربلي" بواسطة فريق من المطورين واللغويين الذين يشاركونك الشغف باللغة العربية.</p>
         </div>
-        <ContentAd aria-label="إعلان داخل صفحة من نحن" style={{gridColumn:'1 / -1',width:'100%'}} />
         <div className="card" style={{gridColumn:'1 / -1'}}>
           <h2>ما هو موقع أعربلي؟</h2>
           <p>أداة متقدمة تساعد الطلاب والمهتمين باللغة العربية على فهم قواعد النحو والإعراب بسهولة ودقة.</p>
@@ -479,7 +470,6 @@ function Contact(){
           <p style={{margin:'0 0 10px'}}>نرحب بآرائكم واقتراحاتكم. يمكنكم التواصل معنا عبر البريد الإلكتروني:</p>
           <p style={{fontSize:'1.05rem'}}><a href="mailto:youssefdev74@gmail.com" className="button ghost">youssefdev74@gmail.com</a></p>
         </div>
-        <ResponsiveAd aria-label="إعلان أسفل الصفحة" />
       </div>
     </section>
   )
@@ -489,9 +479,6 @@ function Footer(){
   return (
     <footer className="footer">
       <div className="container">
-        {/* AdSense Ad Unit */}
-        <FooterAd style={{margin: '20px auto'}} />
-        
         <nav style={{display:'flex',gap:14,flexWrap:'wrap',justifyContent:'center'}}>
           <Link to="/">الرئيسية</Link>
           <Link to="/tool">أداة الإعراب</Link>
