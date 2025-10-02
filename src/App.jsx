@@ -9,7 +9,7 @@ const API_CONFIG = {
     if (import.meta.env.DEV) {
       return ''  // Use Vite proxy in development
     }
-    return 'https://i3-back.vercel.app'
+    return 'https://i3rbly.youssef.cv'
   },
   endpoints: { parse:'/v1/parse', blog:'/v1/blog', contact:'/v1/contact' },
   timeout: 15000,
