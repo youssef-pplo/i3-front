@@ -5,13 +5,12 @@ import { HeaderAd, ContentAd, FooterAd, ResponsiveAd } from './components/AdSens
 
 const API_CONFIG = {
   get baseUrl(){
-    const stored = localStorage.getItem('API_BASE_URL') || ''
     // In development, use empty string to use Vite proxy
-    // In production, use stored URL or fallback to current domain
+    // In production, use the deployed backend URL
     if (import.meta.env.DEV) {
       return ''  // Use Vite proxy in development
     }
-    return stored && stored.trim() !== '' ? stored : ''
+    return 'https://i3-back.vercel.app'
   },
   endpoints: { parse:'/v1/parse', blog:'/v1/blog', contact:'/v1/contact' },
   timeout: 15000,
