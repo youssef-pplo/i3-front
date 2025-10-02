@@ -1,0 +1,34 @@
+# humanstxt.org
+
+/* TEAM */
+Developer: Youssef Elsaid (pplo)
+Contact: youssefdev74@gmail.com
+Website: https://pplo.dev
+Twitter: @pplo_dev
+From: Egypt
+
+/* THANKS */
+Arabic Language Experts
+Beta Testers
+Open Source Community
+
+/* SITE */
+Last update: 2025/10/02
+Language: Arabic / العربية
+Doctype: HTML5
+IDE: Cursor, VS Code
+Technologies: Python, Flask, React, Vite, Google AI
+Standards: HTML5, CSS3, JavaScript ES6+
+Components: Google Generative AI, AdSense, Analytics
+Software: Git, Vercel, GitHub
+
+/* DESCRIPTION */
+اعربلي (I3rbly) is an advanced Arabic grammatical analysis tool
+that helps students and Arabic language enthusiasts understand
+grammar rules and sentence parsing with ease and accuracy.
+
+The website provides a simple and fast experience for analyzing
+Arabic sentences and getting formatted parsing for each word.
+
+Built with love in Egypt 🇪🇬
+Made for the Arabic language community worldwide 🌍

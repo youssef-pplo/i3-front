@@ -1,0 +1,10 @@
+# Netlify redirects for SPA
+/*    /index.html   200
+
+# SEO files - make sure they're served correctly
+/robots.txt   /robots.txt   200
+/sitemap.xml  /sitemap.xml  200
+/ads.txt      /ads.txt      200
+/humans.txt   /humans.txt   200
+/.well-known/security.txt /.well-known/security.txt 200
+/manifest.json /manifest.json 200

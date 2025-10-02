@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Allow all search engines to crawl the entire site
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Disallow crawling of admin or private areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /venv/
+
+# Sitemap location
+Sitemap: https://i3rbly.com/sitemap.xml
+Sitemap: https://i3rbly.com/ads.txt

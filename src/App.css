@@ -46,6 +46,59 @@
 @keyframes slide{0%{transform:translateX(-100%)}50%{transform:translateX(120%)}100%{transform:translateX(220%)}}
 .ad-slot{display:flex;align-items:center;justify-content:center;margin:12px auto;border:1px dashed rgba(24,255,243,.25);border-radius:12px;min-height:90px;max-width:100%}
 .ad-placeholder{display:flex;align-items:center;justify-content:center;margin:12px auto;border:1px dashed rgba(24,255,243,.25);border-radius:12px;min-height:90px;max-width:100%}
+
+/* AdSense Components Styling */
+.adsense-container {
+  display: block;
+  width: 100%;
+  margin: 12px auto;
+  text-align: center;
+  overflow: hidden;
+}
+
+.adsense-container .adsbygoogle {
+  display: block !important;
+  margin: 0 auto;
+}
+
+.header-ad {
+  max-width: 100%;
+  min-height: 90px;
+}
+
+.sidebar-ad {
+  max-width: 300px;
+  min-height: 250px;
+}
+
+.content-ad {
+  max-width: 100%;
+  min-height: 280px;
+}
+
+.footer-ad {
+  max-width: 100%;
+  min-height: 320px;
+}
+
+.responsive-ad {
+  max-width: 100%;
+  min-height: 200px;
+}
+
+/* AdSense loading state */
+.adsense-container:empty::after {
+  content: 'جاري تحميل الإعلان...';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  border: 1px dashed rgba(24,255,243,.25);
+  border-radius: 12px;
+  background: rgba(255,255,255,.02);
+}
 .footer{margin-top:auto;padding:32px 0;background:rgba(3,11,15,.8);border-top:1px solid rgba(24,255,243,.18);text-align:center}
 .footer a{color:var(--muted);text-decoration:none;margin:0 6px}
 .footer a:hover{color:var(--text)}

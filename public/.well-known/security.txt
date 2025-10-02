@@ -1,0 +1,19 @@
+Contact: mailto:youssefdev74@gmail.com
+Contact: https://pplo.dev
+Expires: 2026-12-31T23:59:59.000Z
+Acknowledgments: https://i3rbly.com/security-acknowledgments
+Preferred-Languages: ar, en
+Canonical: https://i3rbly.com/.well-known/security.txt
+
+# Security Policy for i3rbly.com
+# 
+# If you discover a security vulnerability, please report it responsibly.
+# We appreciate your efforts to improve the security of our service.
+#
+# Please include:
+# - Description of the vulnerability
+# - Steps to reproduce
+# - Potential impact
+# - Suggested fix (if any)
+#
+# We will respond within 48 hours and work with you to resolve the issue.
