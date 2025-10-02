@@ -591,6 +591,19 @@ export default function App(){
     onScroll()
     return ()=> window.removeEventListener('scroll', onScroll)
   }, [])
+
+  // Register service worker for PWA
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('SW registered: ', registration);
+        })
+        .catch(registrationError => {
+          console.log('SW registration failed: ', registrationError);
+        });
+    }
+  }, [])
   return (
     <div className="app-root">
       <div className="bg-animated" aria-hidden="true">
