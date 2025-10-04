@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useApi, API_CONFIG } from '../lib/api'
+import AdComponent from '../components/AdComponent'
 
 export default function BlogPost(){
   const { request } = useApi()
@@ -44,6 +45,10 @@ export default function BlogPost(){
           <h1 className="ruqaa ruqaa-invert" style={{marginTop:0}}>{post.title}</h1>
           <div style={{fontSize:'.9rem',color:'#8aa9b0',marginBottom:12}}>{post.date}</div>
           <p>{post.excerpt}</p>
+          
+          {/* Ad Placement */}
+          <AdComponent format="auto" responsive={true} />
+          
           <div dangerouslySetInnerHTML={{__html: post.content || ''}} />
         </article>
       </div>

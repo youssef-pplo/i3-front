@@ -1,14 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useApi, API_CONFIG } from '../lib/api'
+import AdComponent from '../components/AdComponent'
 
 export default function Home(){
   const { request } = useApi()
   const [posts,setPosts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+  
   useEffect(()=>{
     (async()=>{
-      const res = await request(API_CONFIG.endpoints.blog, { method:'GET' })
-      setPosts((res?.posts || []).slice(0,10))
+      try {
+        setLoading(true)
+        setError('')
+        const res = await request(API_CONFIG.endpoints.blog, { method:'GET' })
+        if (res?.posts) {
+          setPosts(res.posts.slice(0,10))
+        } else {
+          setPosts([])
+        }
+      } catch (err) {
+        console.error('Failed to load blog posts:', err)
+        setError('فشل في تحميل المقالات. حاول تحديث الصفحة.')
+        setPosts([])
+      } finally {
+        setLoading(false)
+      }
     })()
   },[])
   return (
@@ -25,7 +43,23 @@ export default function Home(){
         <h2>ما هو موقع أعربلي؟</h2>
         <p style={{margin:'6px 0 0'}}>موقع "أعربلي" أداة متقدمة تساعد الطلاب والمتعلمين والمهتمين باللغة العربية على فهم قواعد النحو والإعراب بسهولة ودقة.</p>
       </div>
-      {posts.length > 0 && (
+      
+      {/* Ad Placement */}
+      <AdComponent format="auto" responsive={true} />
+      
+      {loading && (
+        <div className="card" style={{marginTop:24}}>
+          <div className="loader-bar"><span></span></div>
+        </div>
+      )}
+      
+      {error && (
+        <div className="card" style={{marginTop:24, textAlign:'center', color:'var(--muted)'}}>
+          {error}
+        </div>
+      )}
+      
+      {!loading && posts.length > 0 && (
         <div className="grid grid-3" style={{marginTop:24}}>
           {posts.map(p=> (
             <div key={p.id} className="card">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useApi, API_CONFIG } from '../lib/api'
+import AdComponent from '../components/AdComponent'
 
 export default function Blog(){
   const { request } = useApi()
@@ -48,6 +49,9 @@ export default function Blog(){
         <div style={{display:'flex',justifyContent:'center',marginTop:12}}>
           <button className="button ghost" onClick={()=> setExpanded(v=>!v)}>{expanded?'إخفاء':'عرض جميع المقالات'}</button>
         </div>
+        
+        {/* Ad Placement */}
+        <AdComponent format="auto" responsive={true} />
       </div>
     </section>
   )

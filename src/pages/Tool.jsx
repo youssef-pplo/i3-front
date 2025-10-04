@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useApi, API_CONFIG } from '../lib/api'
 import { renderAsLines, stripTashkeel, getI3rabText } from '../lib/text.jsx'
+import AdComponent from '../components/AdComponent'
 
 export default function Tool(){
   const { request } = useApi()
@@ -70,7 +71,7 @@ export default function Tool(){
               )}
             </div>
           )}
-          <div className="ad-placeholder" style={{marginTop:12}}>مساحة إعلانية</div>
+          <AdComponent format="auto" responsive={true} />
         </aside>
       </div>
     </section>
