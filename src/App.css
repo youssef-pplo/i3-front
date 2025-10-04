@@ -41,6 +41,23 @@
 .parse-output .token:nth-child(8){animation-delay:.16s}
 .parse-output .token:nth-child(9){animation-delay:.18s}
 .parse-output .token:nth-child(10){animation-delay:.2s}
+
+/* Mobile animation optimizations */
+@media (max-width: 768px) {
+  .parse-output .token {
+    animation-duration: 0.2s;
+  }
+  .site-nav.open ul li {
+    animation-duration: 0.2s;
+  }
+}
+
+/* Hardware acceleration for animations */
+.parse-output .token,
+.site-nav.open ul li {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
 .loader-bar{height:3px;border-radius:999px;background:rgba(24,255,243,.15);overflow:hidden;margin-top:10px}
 .loader-bar span{display:block;height:100%;width:40%;background:linear-gradient(90deg, transparent, var(--neon), transparent);animation:slide 1.4s ease-in-out infinite}
 @keyframes slide{0%{transform:translateX(-100%)}50%{transform:translateX(120%)}100%{transform:translateX(220%)}}

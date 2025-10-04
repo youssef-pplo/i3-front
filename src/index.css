@@ -10,7 +10,7 @@ body{
   line-height:1.7;
 }
 
-/* Animated background */
+/* Animated background - Mobile optimized */
 .bg-animated{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
 .bg-animated::before{content:"";position:absolute;inset:-20%;background:conic-gradient(from 0deg at 50% 50%, rgba(24,255,243,.12), rgba(30,155,255,.12), rgba(24,255,243,.12));filter:blur(110px);opacity:.4;animation:spinGradient 28s linear infinite}
 .blob{position:absolute;filter:blur(70px);opacity:.35;border-radius:50%;animation:float 18s ease-in-out infinite}
@@ -18,6 +18,45 @@ body{
 .blob.two{width:420px;height:420px;background:radial-gradient(circle at 50% 50%, var(--accent), transparent 60%);left:-6%;bottom:calc(-10% + var(--scrollY,0px)/-15)}
 @keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(-12px,10px)}}
 @keyframes spinGradient{to{transform:rotate(1turn)}}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .bg-animated::before {
+    filter: blur(60px);
+    opacity: 0.3;
+    animation-duration: 40s;
+  }
+  .blob {
+    filter: blur(40px);
+    opacity: 0.25;
+    animation-duration: 24s;
+  }
+  .blob.one {
+    width: 300px;
+    height: 300px;
+    right: -10%;
+  }
+  .blob.two {
+    width: 250px;
+    height: 250px;
+    left: -15%;
+  }
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .bg-animated::before,
+  .blob {
+    animation: none !important;
+  }
+}
+
+/* Hardware acceleration for better performance */
+.bg-animated::before,
+.blob {
+  transform: translateZ(0);
+  will-change: transform;
+}
 
 .container{width:100%;max-width:1200px;margin-inline:auto;padding:0 20px}
 .section{padding:64px 0}

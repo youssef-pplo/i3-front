@@ -13,14 +13,27 @@ import Privacy from './pages/Privacy.jsx'
 import Terms from './pages/Terms.jsx'
  
 export default function App(){
-  // parallax
+  // parallax - Mobile optimized with throttling
   useEffect(()=>{
+    let ticking = false;
+    let lastScrollY = 0;
+    
     const onScroll = () => {
-      document.documentElement.style.setProperty('--scrollY', String(window.scrollY))
+      lastScrollY = window.scrollY;
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          document.documentElement.style.setProperty('--scrollY', String(lastScrollY));
+          ticking = false;
+        });
+        ticking = true;
+      }
     }
-    window.addEventListener('scroll', onScroll,{passive:true})
-    onScroll()
-    return ()=> window.removeEventListener('scroll', onScroll)
+    
+    // Use passive scroll listener for better performance
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    
+    return () => window.removeEventListener('scroll', onScroll);
   }, [])
 
 

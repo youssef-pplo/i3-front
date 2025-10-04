@@ -12,5 +12,21 @@ export default defineConfig({
         secure: false,
       }
     }
+  },
+  build: {
+    // Optimize build for better mobile performance
+    minify: 'esbuild',
+    target: 'es2015',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+        }
+      }
+    }
+  },
+  // Optimize for mobile devices
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom']
   }
 })
