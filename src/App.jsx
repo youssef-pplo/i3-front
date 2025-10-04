@@ -23,16 +23,20 @@ export default function App(){
     return ()=> window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Register service worker for PWA
+
   useEffect(() => {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js')
-        .then(registration => {
-          console.log('SW registered: ', registration);
-        })
-        .catch(registrationError => {
-          console.log('SW registration failed: ', registrationError);
-        });
+    if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+      const onLoad = () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('SW registered: ', registration)
+          })
+          .catch(registrationError => {
+            console.log('SW registration failed: ', registrationError)
+          })
+      }
+      if (document.readyState === 'complete') onLoad()
+      else window.addEventListener('load', onLoad, { once: true })
     }
   }, [])
   return (
