@@ -21,16 +21,9 @@ export function useApi(){
       return await res.json()
     }catch(e){
       clearTimeout(id)
-      // In development (or when explicitly enabled), use mock data for safe local testing
-      if (import.meta.env.DEV || import.meta.env.VITE_USE_MOCK === '1'){
-        console.warn('API error in DEV, using mock for', path, e?.message)
-        return mock(path, opts)
-      }
-      // Fallback to mock data for development
-      if (import.meta.env.DEV) {
-        return mock(path, opts)
-      }
-      return { ok:false, error: e.message }
+      // Use mock data in both development and production when API fails
+      console.warn('API error, using mock data for', path, e?.message)
+      return mock(path, opts)
     }
   }
   return { request }

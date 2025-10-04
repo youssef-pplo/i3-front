@@ -59,7 +59,7 @@ export default function Home(){
         </div>
       )}
       
-      {!loading && posts.length > 0 && (
+      {!loading && posts.length > 0 ? (
         <div className="grid grid-3" style={{marginTop:24}}>
           {posts.map(p=> (
             <div key={p.id} className="card">
@@ -71,6 +71,10 @@ export default function Home(){
               </div>
             </div>
           ))}
+        </div>
+      ) : !loading && (
+        <div className="card" style={{marginTop:24, textAlign:'center', color:'var(--muted)'}}>
+          <p>لا توجد مقالات متاحة حالياً. يمكنك زيارة <Link to="/blog" style={{color:'var(--neon)'}}>المدونة</Link> لاستكشاف المزيد.</p>
         </div>
       )}
     </section>
